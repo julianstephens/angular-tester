@@ -70,6 +70,11 @@ export class AppComponent {
     return res;
   }
 
+  /**
+   * Gets filter's submenu
+   * @param parent filter
+   * @returns list of children filters
+   */
   getSubmenu(filter: IUIFilter): IUIFilter[] {
     const filters = Object.values(this.filters).filter(
       (f) => f.name.toLowerCase() !== filter.name.toLowerCase()
@@ -82,6 +87,10 @@ export class AppComponent {
     return res;
   }
 
+  /**
+   * Filter orders on click event
+   * @param prop to filter by
+   */
   filterOrderList(prop: string) {
     switch (prop) {
       case 'createdTS':
