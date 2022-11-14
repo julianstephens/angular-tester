@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.row {
+  display: flex;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  padding: 0.75rem;
+}
+
+.submenu {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.radio-button:not(:last-of-type) {
+  margin-bottom: 0.25rem;
+}
