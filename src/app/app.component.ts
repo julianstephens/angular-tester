@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface IUIFilter {
   name: string;
   parent: string;
   hasSubmenu: boolean;
-  objectProp?: string;
+  objectProp: string;
   value?: any;
 }
 
 enum DateOpts {
-  '1-7 Days',
-  '8-14 Days',
-  '14-21 Days',
-  '21-35 Days',
-  '35+ Days',
+  D1 = '1-7 Days',
+  D2 = '8-14 Days',
+  D3 = '14-21 Days',
+  D4 = '21-35 Days',
+  D5 = '35+ Days',
+}
+
+enum CustomerTypeOpts {
+  CT1 = 'Pro',
+  CT2 = 'Homeowner',
 }
 
 @Component({
@@ -21,7 +26,7 @@ enum DateOpts {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-tester';
   filterCounts: { [key: string]: number } = {};
 
@@ -30,6 +35,7 @@ export class AppComponent {
       name: 'Date Range',
       parent: 'Date Range',
       hasSubmenu: true,
+      objectProp: 'dateRange',
       value: 'Date Range',
     },
     createdTS: {
@@ -37,25 +43,33 @@ export class AppComponent {
       parent: 'Date Range',
       hasSubmenu: false,
       objectProp: 'createdTS',
-      value: DateOpts['1-7 Days'],
+      value: Object.values(DateOpts),
     },
     pickedUpTS: {
       name: 'Since picked up',
       parent: 'Date Range',
       hasSubmenu: false,
       objectProp: 'pickedUpTS',
-      value: DateOpts['8-14 Days'],
+      value: Object.values(DateOpts),
     },
     customerType: {
       name: 'Customer Type',
       parent: 'Customer Type',
       hasSubmenu: false,
       objectProp: 'customerType',
-      value: true,
+      value: Object.values(CustomerTypeOpts),
     },
   };
 
   selectedFilters: { [key: string]: any } = {};
+
+  ngOnInit(): void {
+    Object.keys(this.filters).forEach((f) => (this.selectedFilters[f] = null));
+  }
+
+  logChange(change: any) {
+    console.log('CHANGE: ', change);
+  }
 
   /**
    * Gets filter by name
@@ -66,7 +80,6 @@ export class AppComponent {
     const res = Object.values(this.filters).filter(
       (f) => f.name.toLowerCase() === name.toLowerCase()
     )[0];
-    console.log(res.hasSubmenu);
     return res;
   }
 
@@ -79,11 +92,9 @@ export class AppComponent {
     const filters = Object.values(this.filters).filter(
       (f) => f.name.toLowerCase() !== filter.name.toLowerCase()
     );
-    console.log(filters);
     const res = filters.filter(
       (f) => f.parent.toLowerCase() === filter.name.toLowerCase()
     );
-    console.log(res);
     return res;
   }
 

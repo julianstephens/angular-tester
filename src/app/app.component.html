@@ -4,37 +4,40 @@
       Date Range
     </button>
     <mat-menu class="menu" #dateRange="matMenu">
-      <!-- <div class="row"> -->
-      <!--   <p class="radio-button" disabled>Date Range</p> -->
-      <!-- </div> -->
       <div class="row">
         <div class="submenu">
           <ng-container *ngIf="getFilterOpts('date range').hasSubmenu">
-            <mat-radio-group [value]="selectedFilters['dateRange']">
-              <div class="col">
-                <mat-radio-button *ngFor="let sub of getSubmenu(getFilterOpts('Date Range'))" class="radio-button"
-                  [value]="sub" name="sub.objectProp" disableRipple="true">
-                  {{ sub.name }}
+            <ng-container *ngFor="let sub of getSubmenu(getFilterOpts('date range'))">
+              <p>{{ sub.name }}</p>
+              <mat-radio-group class="col" [(ngModel)]="selectedFilters[sub.objectProp]">
+                <mat-radio-button (change)="logChange(sub.objectProp)" *ngFor="let opt of sub.value"
+                  class="radio-button" [value]="opt" name="opt" disableRipple="true">
+                  {{ opt }}
                 </mat-radio-button>
-              </div>
-            </mat-radio-group>
+              </mat-radio-group>
+            </ng-container>
           </ng-container>
         </div>
       </div>
     </mat-menu>
   </div>
-  <!-- <div class="col"> -->
-  <!--   <button mat-button [matMenuTriggerFor]="customerType" class="filter-button"> -->
-  <!--     Customer Type -->
-  <!--   </button> -->
-  <!--   <mat-menu #customerType="matMenu"> -->
-  <!--     <mat-radio-button class="radio-button">Customer Type</mat-radio-button> -->
-  <!--     <mat-radio-group *ngIf="getFilterOpts('customer type').hasSubmenu" [value]="selectedFilters['customerType']"> -->
-  <!--       <mat-radio-button *ngFor="let sub of getSubmenu(getFilterOpts('Customer Type'))" class="radio-button" -->
-  <!--         [value]="sub" name="sub.objectProp" disableRipple="true"> -->
-  <!--         {{ sub.name }} -->
-  <!--       </mat-radio-button> -->
-  <!--     </mat-radio-group> -->
-  <!--   </mat-menu> -->
-  <!-- </div> -->
+  <div class="col">
+    <button mat-button [matMenuTriggerFor]="customerType" class="filter-button">
+      Customer Type
+    </button>
+    <mat-menu class="menu" #customerType="matMenu">
+      <div class="row">
+        <div class="submenu">
+          <mat-radio-group [(ngModel)]="selectedFilters['customerType']">
+            <div class="col">
+              <mat-radio-button (change)="logChange('customerType')" *ngFor="let opt of filters['customerType'].value"
+                class="radio-button" [value]="opt" name="opt" disableRipple="true">
+                {{ opt }}
+              </mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
 </div>
