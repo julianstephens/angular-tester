@@ -72,6 +72,18 @@ export class AppComponent implements OnInit {
   }
 
   /**
+   * Converts selected radio text to proper value
+   * @param name
+   * @returns filter or undefined if not found
+   */
+  saveFilter(name: string, value: any) {
+    if (name === 'customerType') {
+      this.selectedFilters['customerType'] =
+        value.toLowerCase() === 'pro' ? true : false;
+    }
+  }
+
+  /**
    * Gets filter by name
    * @param name
    * @returns filter or undefined if not found
