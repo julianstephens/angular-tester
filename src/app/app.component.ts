@@ -115,17 +115,9 @@ export class AppComponent implements OnInit {
    * @param prop to filter by
    */
   filterOrderList(prop: string) {
-    switch (prop) {
-      case 'createdTS':
-        const val = this.filters['createdTS'].value;
-        if (!val) return;
-        // 1. check val type
-        // 2. build query
-        // 3. filter list
-        break;
+    const filterByValue = this.selectedFilters[prop];
+    console.log(`User wants to filter ${prop} by ${filterByValue}`);
 
-      default:
-        break;
-    }
+    // filter order list by filterByValue
   }
 }
