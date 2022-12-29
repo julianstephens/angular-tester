@@ -1,0 +1,30 @@
+{
+  "dateRange": {
+    "name": "Date Range",
+    "parent": 'Date Range',
+      hasSubmenu: true,
+      objectProp: 'dateRange',
+      value: 'Date Range',
+  },
+    createdTS: {
+      name: 'Since created',
+      parent: 'Date Range',
+      hasSubmenu: false,
+      objectProp: 'createdTS',
+      value: Object.values(DateOpts),
+  },
+    pickedUpTS: {
+      name: 'Since picked up',
+      parent: 'Date Range',
+      hasSubmenu: false,
+      objectProp: 'pickedUpTS',
+      value: Object.values(DateOpts),
+  },
+    customerType: {
+      name: 'Customer Type',
+      parent: 'Customer Type',
+      hasSubmenu: false,
+      objectProp: 'customerType',
+      value: Object.values(CustomerTypeOpts),
+  },
+}

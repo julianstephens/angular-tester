@@ -4,28 +4,34 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.h-100 {
+  height: 100%;
+}
+
 .row {
   display: flex;
 }
+
 .col {
   display: flex;
   flex-direction: column;
 }
 
-.menu {
-  padding: 0.75rem;
+.justify-center {
+  justify-content: center;
 }
 
-.submenu {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
+.align-center {
+  align-items: center;
 }
 
-.radio-button:not(:last-of-type) {
-  margin-bottom: 0.25rem;
+snack-bar-container.mat-snack-bar-container {
+  background: transparent;
+  color: black;
 }

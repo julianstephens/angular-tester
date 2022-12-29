@@ -1,45 +1,4 @@
-<div class="row">
-  <div class="col">
-    <button mat-button [matMenuTriggerFor]="dateRange" class="filter-button">
-      Date Range
-    </button>
-    <mat-menu class="menu" #dateRange="matMenu">
-      <div class="row">
-        <div class="submenu">
-          <ng-container *ngIf="getFilterOpts('date range').hasSubmenu">
-            <ng-container *ngFor="let sub of getSubmenu(getFilterOpts('date range'))">
-              <p>{{ sub.name }}</p>
-              <mat-radio-group (change)="filterOrderList(sub.objectProp)" class="col"
-                [(ngModel)]="selectedFilters[sub.objectProp]">
-                <mat-radio-button (change)="logChange(sub.objectProp)" *ngFor="let opt of sub.value"
-                  class="radio-button" [value]="opt" name="opt" disableRipple="true">
-                  {{ opt }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </ng-container>
-          </ng-container>
-        </div>
-      </div>
-    </mat-menu>
-  </div>
-  <div class="col">
-    <button mat-button [matMenuTriggerFor]="customerType" class="filter-button">
-      Customer Type
-    </button>
-    <mat-menu class="menu" #customerType="matMenu">
-      <div class="row">
-        <div class="submenu">
-          <mat-radio-group (change)="filterOrderList('customerType')">
-            <div class="col">
-              <mat-radio-button (change)="saveFilter('customerType', opt)"
-                *ngFor="let opt of filters['customerType'].value" class="radio-button" [value]="opt" name="opt"
-                disableRipple="true">
-                {{ opt }}
-              </mat-radio-button>
-            </div>
-          </mat-radio-group>
-        </div>
-      </div>
-    </mat-menu>
-  </div>
-</div>
+<button (click)="success()">Success</button>
+<button (click)="info()">Info</button>
+<button (click)="warning()">Warning</button>
+<button (click)="error()">Error</button>

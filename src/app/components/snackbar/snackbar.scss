@@ -1,0 +1,46 @@
+.snackbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.success .title {
+    color: green;
+  }
+  &.error .title {
+    color: red;
+  }
+  &.info .title {
+    color: blue;
+  }
+  &.warning .title {
+    color: yellow;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    background: none;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+
+    $close: #f21d1d;
+    color: $close;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border: none;
+      color: darken($close, 10%);
+    }
+  }
+}
